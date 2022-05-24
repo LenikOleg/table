@@ -1,0 +1,38 @@
+<app-header>
+  <mat-icon
+    headerBackwardsLink
+    [routerLink]="'/'"
+    class="material-icons-outlined"
+    >arrow_back_ios</mat-icon
+  >
+
+  <ng-container headerObjectInfo>
+    <div class="icm-gilroy-H500">Список проектов</div>
+  </ng-container>
+
+  <ng-container headerButtons>
+    <button mat-stroked-button *ngIf="!isTreeView" (click)="toggleTreeView()">
+      Открыть в иерархии
+    </button>
+
+    <button mat-stroked-button *ngIf="isTreeView" (click)="toggleTreeView()">
+      Открыть в списке
+    </button>
+
+    <div class="history">
+      <mat-icon class="material-icons-outlined" matTooltip="История изменений"
+        >history</mat-icon
+      >
+    </div>
+  </ng-container>
+</app-header>
+<ng-container *ngIf="data$ | async as data">
+  <app-table-wrapper *ngIf="!isTreeView"
+  [data]="data"
+  [components]="(readonly$ | async) ? editToolbarButtons : readonlyToolbarButtons"
+  (rowClick)="selectRow($event)"
+  (tbBtnClick)="toolbarBtnClick($event)"
+></app-table-wrapper>
+ </ng-container>
+
+<app-list *ngIf="isTreeView"></app-list>

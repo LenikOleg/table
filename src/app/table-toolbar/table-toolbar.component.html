@@ -1,0 +1,40 @@
+<mat-card>
+  <div class="table-header">
+    <mat-form-field appearance="outline">
+      <mat-label>Поиск</mat-label>
+      <input matInput #input />
+    </mat-form-field>
+    <div class="flex-around">
+      <ng-template optionalComponentContainer></ng-template>
+      <button
+        mat-icon-button
+        color="primary"
+        [matMenuTriggerFor]="menu"
+        #columnsMenuTrigger="matMenuTrigger"
+        (menuOpened)="(columnsMenuTrigger.menuOpen)"
+        (menuClosed)="(columnsMenuTrigger.menuOpen)"
+      >
+        <mat-icon fontIcon="i_settings_24px" matTooltip="Настройка колонок">
+          settings
+        </mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="checkbox-menu columns-menu">
+        <div class="padding-10">Настройка колонок</div>
+        <button
+          mat-menu-item
+          (click)="$event.stopPropagation()"
+          *ngFor="let column of columns"
+        >
+          <mat-checkbox
+            color="primary"
+            [checked]="column.isShow!"
+            [(ngModel)]="column.isShow"
+            [disabled]="column.isDisabled!"
+          >
+            {{ column.header }}</mat-checkbox
+          >
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-card>

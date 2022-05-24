@@ -1,0 +1,30 @@
+<div [ngSwitch]="badge">
+  <button
+    *ngSwitchCase="BadgeTypeEnum.button"
+    [disabled]="disabled"
+    [class]="
+      'icm-btn icm-btn-small-icon-left icm-btn-outlined icm-btn-small icm-btn-outlined-' +
+      paletteColor +
+      ' margin-right-20'
+    "
+    (click)="onClickHandler()"
+  >
+    <i
+      [class]="'material-icons-outlined icm-color-' + paletteColor + '-60'"
+      [style.color]="color"
+    >
+      {{ icon }}
+    </i>
+    <span class="text" *ngIf="text">{{ text }}</span>
+  </button>
+  <mat-icon
+    *ngSwitchCase="BadgeTypeEnum.icon"
+    class="icm-color-grey-60 material-icons-outlined icon"
+    [attr.disabled]="disabled"
+    [matTooltip]="tooltip"
+    [fontIcon]="fontIcon"
+    (click)="!disabled ? onClickHandler() : null"
+  >
+    {{ icon }}
+  </mat-icon>
+</div>

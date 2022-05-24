@@ -1,0 +1,242 @@
+:host {
+  display: block;
+  margin-bottom: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: block;
+  max-width: 100%;
+  background-color: white;
+}
+
+.top-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 24px;
+  border-bottom: 1px solid rgba(228, 228, 228, 1);
+}
+
+.headers-title-block {
+  display: block;
+
+  ::ng-deep .div {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep span {
+      line-height: 30px;
+      margin-left: 31px;
+    }
+  }
+
+  ::ng-deep .icm-badges {
+    font-family: Gilroy, serif;
+    display: block;
+    padding-left: 0;
+    color: #f37a1f;
+    font-weight: bold;
+  }
+
+  ::ng-deep .icm-gilroy-H500 {
+    line-height: 30px;
+    font-size: 24px;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  .check {
+    height: 24px;
+    margin-right: 20px;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+  margin: 0 30px 0 0;
+  color: #2c5de5;
+  cursor: pointer;
+
+  ::ng-deep {
+    mat-form-field.mat-form-field {
+      font-size: 24px;
+      width: 170px;
+    }
+
+    .mat-form-field-appearance-outline .mat-select-value-text {
+      font-weight: 400;
+    }
+
+    .mat-focused.mat-form-field-appearance-outline .mat-form-field-outline {
+      &-start,
+      &-gap,
+      &-end {
+        border-width: 1px !important;
+        border-color: black !important;
+      }
+    }
+
+    .mat-form-field-appearance-outline:first-child .mat-form-field-outline-end {
+      border-right: none;
+    }
+    .mat-form-field-appearance-outline:first-child .mat-form-field-outline-end,
+    .mat-form-field-appearance-outline:last-child
+      .mat-form-field-outline-start {
+      outline: none;
+      border-radius: 0;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0.25em 0 0.75em 0;
+      font-size: 14px;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix .mat-select-arrow {
+      margin-top: 10px;
+    }
+    .mat-form-field-appearance-outline
+      .mat-select-empty
+      + .mat-form-field-label-wrapper
+      .mat-form-field-label {
+      margin-top: -0.75em;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.bell {
+  display: block;
+  margin: 0 30px 0 0;
+  color: #2c5de5;
+  cursor: pointer;
+}
+
+.mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  background-color: #f37a1f;
+  top: -15px;
+  left: 13px;
+}
+
+.notification-container {
+  list-style: none;
+}
+
+/* bottom header */
+
+.bot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+
+  ::ng-deep .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+      display: inline-block;
+      color: #a1a1a1 !important;
+
+      a {
+        font-size: 20px;
+        color: #a1a1a1 !important;
+        text-decoration: none;
+      }
+
+      & + li:before {
+        padding: 12px;
+        content: "/\00a0";
+        color: rgba(161, 161, 161, 1);
+      }
+
+      &:last-child {
+        font-weight: 400;
+      }
+    }
+  }
+
+  ::ng-deep .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 20px;
+
+    .history {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+
+      i {
+        font-size: 24px;
+        color: #a1a1a1;
+      }
+
+      &:hover {
+        i {
+          color: #636362;
+        }
+      }
+    }
+
+    ::ng-deep .setting {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+
+    ::ng-deep .delete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+  }
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .option-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .remove-option-btn {
+    margin: 0;
+  }
+}
+
+::ng-deep {
+  .select-options {
+    margin-top: 25px !important;
+  }
+}

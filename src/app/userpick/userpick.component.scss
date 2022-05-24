@@ -1,0 +1,210 @@
+// Стилевой файл для аватара
+
+.ui-userpick {
+  display: flex;
+  font-weight: 400;
+  position: relative;
+  align-items: flex-start;
+  font-family: Gilroy, serif;
+
+  &__marker {
+    position: absolute;
+    border-radius: 50px;
+    border: 2px solid white;
+    background-color: #91adfa;
+  }
+
+  &__ava {
+    overflow: hidden;
+    border-radius: 50%;
+    //background: url('../../../../assets/img/temp-user01.jpg') no-repeat center;
+    background-size: cover;
+
+    background: no-repeat center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    white-space: normal;
+    box-sizing: border-box;
+    &-position {
+      color: #a1a1a1;
+    }
+    &-name {
+      color: #1a1a1a;
+      line-height: normal;
+      &.link-text {
+        text-decoration: none;
+        color: #2c5de5;
+        cursor: pointer;
+      }
+    }
+    &-department {
+      color: #656565;
+    }
+  }
+
+  &.size6 {
+    .ui-userpick__ava {
+      width: 148px;
+      height: 148px;
+      min-width: 148px;
+      min-height: 148px;
+    }
+    .ui-userpick__info {
+      padding-left: 48px;
+      padding-top: 28px;
+    }
+    .ui-userpick__info-position {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+    }
+    .ui-userpick__info-name {
+      font-size: 24px;
+      margin: 0 0 10px 0;
+    }
+    .ui-userpick__info-department {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &.size5 {
+    .ui-userpick__ava {
+      width: 88px;
+      height: 88px;
+      min-width: 88px;
+      min-height: 88px;
+    }
+    .ui-userpick__marker {
+      width: 20px;
+      height: 20px;
+      left: 68px;
+      top: 68px;
+    }
+    .ui-userpick__info {
+      padding-left: 20px;
+    }
+    .ui-userpick__info-position {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .ui-userpick__info-name {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .ui-userpick__info-department {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  &.size4 {
+    .ui-userpick__ava {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      min-height: 56px;
+    }
+    .ui-userpick__marker {
+      width: 14px;
+      height: 14px;
+      left: 42px;
+      top: 42px;
+    }
+    .ui-userpick__info {
+      padding-left: 15px;
+    }
+    .ui-userpick__info-position,
+    .ui-userpick__info-department {
+      font-size: 12px;
+      margin: 0;
+    }
+    .ui-userpick__info-name {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+
+  &.size3 {
+    .ui-userpick__ava {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .ui-userpick__marker {
+      width: 12px;
+      height: 12px;
+      left: 32px;
+      top: 32px;
+    }
+    .ui-userpick__info {
+      padding-left: 12px;
+    }
+    .ui-userpick__info-position,
+    .ui-userpick__info-department {
+      font-size: 12px;
+      margin: 0;
+    }
+    .ui-userpick__info-name {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+
+  &.size2 {
+    .ui-userpick__ava {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .ui-userpick__marker {
+      width: 8px;
+      height: 8px;
+      left: 24px;
+      top: 24px;
+    }
+    .ui-userpick__info {
+      padding-left: 12px;
+    }
+    .ui-userpick__info-position,
+    .ui-userpick__info-name,
+    .ui-userpick__info-department {
+      font-size: 12px;
+      margin: 0;
+      line-height: 16px;
+    }
+  }
+
+  &.size1 {
+    .ui-userpick__ava {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+    }
+    .ui-userpick__marker {
+      width: 6px;
+      height: 6px;
+      left: 18px;
+      top: 18px;
+    }
+    .ui-userpick__info {
+      padding-left: 12px;
+    }
+    .ui-userpick__info-position,
+    .ui-userpick__info-name,
+    .ui-userpick__info-department {
+      font-size: 12px;
+      margin: 0;
+      line-height: 16px;
+    }
+  }
+}

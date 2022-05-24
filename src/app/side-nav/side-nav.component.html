@@ -1,0 +1,57 @@
+<div class="sidebar-container" (mouseleave)="onSidebarMouseLeave()">
+  <div class="sidebar-container_top">
+    <div class="sidebar-header" routerLink="/main">
+      <div class="avatar"></div>
+      <div class="avatar1"></div>
+    </div>
+
+    <div *ngFor="let mainItem of menuItems; let i = index">
+      <div class="menu-item" (click)="selectMenuItem(i)">
+        <div class="btn">
+          <mat-icon class="icons material-icons-outlined">{{
+            mainItem.icon
+          }}</mat-icon>
+          <span>{{ mainItem.title }}</span>
+          <mat-icon
+            *ngIf="mainItem.children?.length"
+            fontSet="icm-icon"
+            fontIcon="i_chevron_right_24px"
+            class="expand-icon icm-color-grey-40"
+            [ngClass]="{ expand: mainItem.isExpand }"
+          ></mat-icon>
+        </div>
+      </div>
+
+      <div *ngIf="mainItem.isExpand" class="submenu icm-body-large">
+        <div
+          *ngFor="let children of mainItem.children"
+          class="submenu-item"
+          [ngClass]="{ active: children.link && activeLink === children.link }"
+          (click)="navigate(children, true)"
+        >
+          {{ children.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-container_bottom">
+    <div *ngFor="let item of bMenuItems">
+      <div class="menu-item">
+        <div class="btn">
+          <mat-icon class="icons material-icons-outlined">{{
+            item.icon
+          }}</mat-icon>
+          {{ item.title }}
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="btn">
+        <mat-icon class="icons material-icons-outlined">logout</mat-icon>
+        Выход
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<ng-container *ngIf="columns$ | async as columns">
+  <app-table-toolbar
+  [columns]="columns"
+  [components]="components"
+  (onClick)="onToolbarBtnClick($event)"
+  ></app-table-toolbar>
+</ng-container>
+
+<ng-container *ngIf="columns$ | async as columns">
+    <app-table
+    [data]="data"
+    [columns]="columns"
+    (rowClick)="onRowClick($event)"
+  ></app-table>
+  </ng-container>
+

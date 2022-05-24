@@ -1,0 +1,22 @@
+<ng-container *ngIf="breadcrumbs as crumbs">
+  <li>
+    <a *ngIf="rootLink" [href]="rootLink">
+      {{ home }}
+    </a>
+    <a *ngIf="!rootLink" routerLink="/#!">
+      {{ home }}
+    </a>
+  </li>
+  <li *ngFor="let breadcrumb of crumbs">
+    <a *ngIf="breadcrumb.url; else plainText" [routerLink]="breadcrumb.url">
+      {{ breadcrumb.label }}
+    </a>
+
+    <ng-template #plainText>{{ breadcrumb.label }}</ng-template>
+  </li> </ng-container
+>>
+
+<!-----
+
+
+  --->

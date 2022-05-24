@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{ action }}</h2>
+<mat-dialog-content>
+  <ng-container *ngIf="action != 'Удалить элемент'; else elseTemplate">
+    <mat-form-field appearance="fill">
+      <mat-label>Название элемента</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="localData.name"
+      /> </mat-form-field
+    ><br />
+    <mat-form-field appearance="fill">
+      <mat-label>Обозначение</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="localData.symbol"
+      /> </mat-form-field
+    ><br />
+    <mat-form-field appearance="fill">
+      <mat-label>Масса</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="localData.weight"
+      /> </mat-form-field
+    ><br />
+    <mat-form-field appearance="fill">
+      <mat-label>Год открытия</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="localData.openingYear"
+      /> </mat-form-field
+    ><br />
+  </ng-container>
+  <ng-template #elseTemplate> Удалить {{ data.name }}? </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="closeDialog()">Отменить</button>
+  <button mat-button mat-dialog-close (click)="getElementData()" >
+    {{ action }}
+  </button>
+</mat-dialog-actions>

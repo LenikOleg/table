@@ -1,0 +1,114 @@
+<mat-card>
+  <div class="top-header">
+    <div class="title">
+      <div class="check">
+        <ng-content select="[headerBackwardsLink]"></ng-content>
+      </div>
+
+      <div class="headers-title-block">
+        <ng-content select="[headerObjectType]"></ng-content>
+
+        <div class="div">
+          <ng-content select="[headerObjectInfo]"></ng-content>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile">
+      <div
+        class="search"
+        [formGroup]="searchForm"
+        (keydown.enter)="onSearch(); $event.preventDefault()"
+      >
+        <mat-form-field appearance="outline">
+          <mat-select
+            placeholder="Разделы"
+            formControlName="section"
+            disableOptionCentering
+            panelClass="select-options"
+          >
+            <mat-option [value]="'projects'">Проект</mat-option>
+            <mat-option [value]="'organizations'">Организация</mat-option>
+            <mat-option [value]="'individuals'">Физическое лицо</mat-option>
+            <mat-option [value]="'workinglist'">Рабочая группа</mat-option>
+            <mat-option [value]="'divisions'">Подразделение</mat-option>
+            <mat-option [value]="'documents'">Документ</mat-option>
+            <mat-option [value]="'checks'">Проверка</mat-option>
+            <mat-option [value]="'activities'">Активность</mat-option>
+            <mat-option [value]="'events'">Мероприятие</mat-option>
+            <mat-option [value]="'tasks'">Поручение</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="right-section">
+          <input
+            type="text"
+            placeholder="Поиск"
+            matInput
+            formControlName="searchText"
+            [matAutocomplete]="auto"
+          />
+          <mat-icon
+            matSuffix
+            fontSet="icm-icon"
+            fontIcon="i_search_24px"
+          ></mat-icon>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of getSuggestItems()"
+              [value]="option"
+            >
+              <div class="option-item">
+                <span class="option-text">{{ option }}</span>
+                <mat-icon
+                  matSuffix
+                  class="remove-option-btn"
+                  fontSet="icm-icon"
+                  fontIcon="i_close_24px"
+                  (click)="removeSuggestItem(option); $event.stopPropagation()"
+                ></mat-icon>
+              </div>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <!--        <mat-form-field-->
+        <!--          appearance="outline"-->
+        <!--          class="right-section"-->
+        <!--        >-->
+        <!--          <input matInput placeholder="Поиск" formControlName="searchText">-->
+        <!--          <mat-icon matSuffix fontSet="icm-icon" fontIcon="i_search_24px"></mat-icon>-->
+        <!--        </mat-form-field>-->
+      </div>
+      <div class="bell">
+        <ul>
+          <li class="notification-container">
+            <mat-icon
+              [routerLink]="'/notifications'"
+              matBadge="6"
+              matBadgeColor="accent"
+              fontSet="icm-icon"
+              fontIcon="i_notification"
+            ></mat-icon>
+          </li>
+        </ul>
+      </div>
+
+      <app-userpick
+        [data]="dataForUserpick"
+        [onlyPhoto]="false"
+        [size]="4"
+      ></app-userpick>
+    </div>
+  </div>
+
+  <div class="bot-header" *ngIf="showbreadCrumbs">
+    <ul class="breadcrumb icm-body-small">
+      <app-breadcrumb [title]="title"></app-breadcrumb>
+    </ul>
+
+    <div class="button-container">
+      <ng-content select="[headerButtons]"></ng-content>
+    </div>
+  </div>
+</mat-card>

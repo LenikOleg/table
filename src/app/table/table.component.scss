@@ -1,0 +1,79 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 300px;
+}
+
+td,
+th {
+  width: 100%;
+}
+.table-wrapper {
+  display: block;
+  max-width: 100%;
+  background-color: white;
+  padding: 20px;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid inherit;
+  border-top: 1px solid inherit;
+  cursor: pointer;
+}
+
+.mat-row {
+  &:hover {
+    .mat-cell {
+      background-color: #eef3ff;
+    }
+  }
+}
+
+.icon {
+  margin: 8px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+mat-checkbox.checkbox-label-display-none {
+  ::ng-deep label.mat-checkbox-layout {
+    span.mat-checkbox-label {
+      display: none;
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  label {
+    cursor: pointer;
+  }
+
+  .width-24 {
+    width: 24px;
+  }
+}
+
+.mat-icon:hover {
+  color: #636362;
+}
+
+.mat-mini-fab {
+  margin: 0 5px;
+  .mat-icon {
+    &:hover {
+      color: rgb(233, 32, 32);
+    }
+  }
+}
+
+.active {
+  background-color: #eef3ff;
+}

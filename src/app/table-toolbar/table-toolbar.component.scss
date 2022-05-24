@@ -1,0 +1,21 @@
+.table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.flex-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mat-stroked-button {
+  height: 35px;
+  margin-right: 30px;
+}
