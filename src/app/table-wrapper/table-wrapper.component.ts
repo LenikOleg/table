@@ -25,7 +25,7 @@ export class TableWrapperComponent implements OnInit {
   @Output() tbBtnClick = new EventEmitter<string>();
 
   @Input()
-  data!: Array<PeriodicElement>;
+  data: Array<PeriodicElement> = [];
 
   @Input()
   components!: Array<InputComponent>;
@@ -75,13 +75,8 @@ export class TableWrapperComponent implements OnInit {
     },
   ];
 
-
-
-
-  showButtons: boolean = false;
   columns$ = of(this.columns);
 
-  data$ = of(this.data)
   onRowClick(row: any) {
     this.rowClick.emit(row);
 

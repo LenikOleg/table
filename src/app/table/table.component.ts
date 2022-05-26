@@ -47,7 +47,7 @@ export class TableComponent implements AfterViewInit {
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.data);
-    
+
   }
 
   ngAfterViewInit() {

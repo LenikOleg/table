@@ -26,7 +26,7 @@
     </div>
   </ng-container>
 </app-header>
-<ng-container *ngIf="data$ | async as data">
+<ng-container *ngIf="data$$ | async as data">
   <app-table-wrapper *ngIf="!isTreeView"
   [data]="data"
   [components]="(readonly$ | async) ? editToolbarButtons : readonlyToolbarButtons"

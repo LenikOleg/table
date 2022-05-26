@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, of, ReplaySubject, map } from 'rxjs';
 import { BadgeTypeEnum, ButtonComponent } from '../button/button.component';
 import { InputComponent } from '../models/input-component';
 import { PeriodicElement } from '../models/periodic-element';
@@ -56,7 +56,7 @@ export class ProjectsTableComponent {
     },
   ];
 
-  data: PeriodicElement[] = [
+  data$ = new BehaviorSubject( [
     {
       position: 1,
       name: 'Hydrogen',
@@ -137,12 +137,15 @@ export class ProjectsTableComponent {
       id: 10,
       openingYear: 1898,
     },
-  ];
+  ])
+
+  get data$$() {
+    return this.data$.asObservable();
+  }
 
   constructor(public dialog: MatDialog) {
 
   }
-  data$ = of(this.data);
 
   toolbarBtnClick(name: any) {
     switch (name) {
@@ -150,7 +153,7 @@ export class ProjectsTableComponent {
         this.addNewElement(name, {});
         break;
       }
-      case 'delete': {
+       case 'delete': {
         this.deleteElement(name, {});
         break;
       }
@@ -170,23 +173,6 @@ export class ProjectsTableComponent {
 
   }
 
-  /* openDialog(action: any, obj: any) {
-    obj.action = action;
-    const dialogRef = this.dialog.open(AddElementFormComponent, {
-      data: obj,
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res.event == 'Добавить элемент') {
-        this.addNewElement();
-      } else if (res.event == 'Изменить') {
-        this.editElement(res.data);
-      } else if (res.event == 'Удалить элемент') {
-        this.deleteElement(res.data);
-      }
-    });
-  } */
-
   addNewElement(action:string, obj:any) {
     action = 'Добавить элемент';
     obj.action = action;
@@ -195,16 +181,18 @@ export class ProjectsTableComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.data.push({
-      position: this.data.length + 1,
+      const data = this.data$.getValue();
+      data.push({
+
+      position: data.length + 1,
       name: res.data.name,
       weight: res.data.weight,
       symbol: res.data.symbol,
-      id: this.data.length + 1,
+      id: data.length + 1,
       openingYear: res.data.openingYear,
       })
-
-      console.log(this.data);
+      this.data$.next([...data])
+      console.log([...data]);
     })
 
 
@@ -221,8 +209,8 @@ export class ProjectsTableComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-
-      this.data.filter((value, key) => {
+      const data = this.data$.getValue();
+      data.filter((value, key) => {
       if (value.id == res.data.id) {
         value.name = res.data.name;
         value.weight = res.data.weight;
@@ -230,8 +218,9 @@ export class ProjectsTableComponent {
         value.openingYear = res.data.openingYear;
       }
       return true;
-    });
-      console.log(this.data);
+      });
+      this.data$.next([...data])
+      console.log([...data]);
     })
   }
 
@@ -245,48 +234,13 @@ export class ProjectsTableComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-
-      this.data = this.data.filter(
+      let data = this.data$.getValue();
+       data = data.filter(
       (value, key) => {
         return value.id != res.data.id;
-      }
+        }
     );
-      console.log(this.data);
-
+      this.data$.next([...data])
     })
   }
-
-
-
-  /* addNewElement(obj: any) {
-    this.dataSource.filteredData.push({
-      name: obj.name,
-      position: this.dataSource.filteredData.length + 1,
-      weight: obj.weight,
-      symbol: obj.symbol,
-      id: this.dataSource.filteredData.length + 1,
-      openingYear: obj.openingYear,
-    });
-    this.dataSource._updateChangeSubscription();
-  }
-
-  editElement(obj: any) {
-    this.dataSource.filteredData.filter((value, key) => {
-      if (value.id == obj.id) {
-        value.name = obj.name;
-        value.weight = obj.weight;
-        value.symbol = obj.symbol;
-        value.openingYear = obj.openingYear;
-      }
-      return true;
-    });
-  }
-
-  deleteElement(obj: any) {
-    this.dataSource.filteredData = this.dataSource.filteredData.filter(
-      (value, key) => {
-        return value.id != obj.id;
-      }
-    );
-  } */
 }
